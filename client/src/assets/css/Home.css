@@ -1,0 +1,33 @@
+.home-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-wrapper__banner {
+  display: flex;
+  padding: 4rem 0;
+  background-color: #121825;
+  width: 100%;
+}
+.home-wrapper__banner__internal {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.home-wrapper__banner__internal h1 {
+  font-size: 4rem;
+}
+.home-wrapper__banner__internal p {
+  font-size: 1.25rem;
+}
+.home-wrapper__banner__internal__button-wrapper {
+  display: flex;
+  gap: 2.25rem;
+}/*# sourceMappingURL=Home.css.map */
