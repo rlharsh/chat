@@ -1,3 +1,58 @@
+.Modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 50%;
+  background-color: #FFF;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-wrapper h2 {
+  color: #009cf6;
+  font-size: 2rem;
+}
+.modal-wrapper p {
+  font-weight: 300;
+  line-height: 1.4rem;
+  margin-top: 2rem;
+}
+.modal-wrapper label {
+  margin-top: 2rem;
+}
+.modal-wrapper__left {
+  flex: 1 1 50%;
+}
+.modal-wrapper__right {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+}
+.modal-wrapper input[type=text] {
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  border: 1px solid #009cf6;
+  margin-top: 1rem;
+}
+.modal-wrapper button {
+  margin-top: 2rem;
+}
+
 .home-wrapper {
   width: 100%;
   min-height: 100vh;
@@ -7,8 +62,8 @@
 }
 .home-wrapper__banner {
   display: flex;
-  padding: 4rem 0;
-  background-color: #121825;
+  padding: 8rem 0;
+  background-color: #f8f8f8;
   width: 100%;
 }
 .home-wrapper__banner__internal {
@@ -23,11 +78,15 @@
 }
 .home-wrapper__banner__internal h1 {
   font-size: 4rem;
+  font-weight: 300;
+  color: #009cf6;
 }
 .home-wrapper__banner__internal p {
   font-size: 1.25rem;
+  font-weight: 300;
 }
 .home-wrapper__banner__internal__button-wrapper {
   display: flex;
   gap: 2.25rem;
+  margin-top: 2rem;
 }/*# sourceMappingURL=Home.css.map */

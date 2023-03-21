@@ -1,18 +1,21 @@
 body {
-  background-color: #0B0E15;
+  background-color: #ffffff;
   margin: 0 auto;
 }
 
 .button {
   font-family: "Poppins", sans-serif;
-  font-size: 2rem;
-  padding: 0.6rem 4rem;
+  font-size: 1.4rem;
+  font-weight: 200;
+  padding: 1rem 2rem;
   border-radius: 10px;
-  background-color: #5182FF;
-  color: #0C0E15;
+  background-color: #009cf6;
+  color: #FFF;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 .button:hover {
-  background-color: #658ef6;
+  background-color: #bde7ff;
+  color: #000;
 }/*# sourceMappingURL=app.css.map */

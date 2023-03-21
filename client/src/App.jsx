@@ -1,5 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import socketIO from 'socket.io-client';
+
+const socket = socketIO.connect('http://localhost:4000');
+
 
 /* Import the primary Stylesheet */
 import './assets/css/app.css';
