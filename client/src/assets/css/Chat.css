@@ -1,0 +1,29 @@
+.chat {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__main {
+  height: 100%;
+  flex: 1;
+  overflow: auto;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+}
+
+.chat_footer {
+  padding: 10px;
+  background-color: #F9F5EB;
+  height: 10vh;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}/*# sourceMappingURL=Chat.css.map */

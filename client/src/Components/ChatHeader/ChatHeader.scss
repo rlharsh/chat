@@ -1,0 +1,58 @@
+.chat-header {
+    width:          100%;
+    max-width:      1440px;
+    margin:         0 auto;
+
+    padding:        2rem 0;
+
+    display:        flex;
+    justify-content:    space-between;
+
+    button {
+        font-family:    'Poppins', sans-serif;
+        font-size:          1rem;
+        font-weight:        300;
+        padding:            1rem 2rem;
+        border-radius:      10px;
+        color:              #009cf6;
+        border:             1px solid #009cf6;
+        background-color:   transparent;
+        cursor:             pointer;
+
+        &:hover {
+            color:      #FFF;
+            background-color: #009cf6;
+        }
+    }
+
+    h1 {
+        font-size:      2.5rem;
+        font-weight:    200;
+    }
+
+    &__left {
+        display:        flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &__breadcrumbs {
+            display:    flex;
+            gap: 1rem;
+        }
+    }
+
+    &__right {
+        display:        flex;
+        flex-direction: column;
+    }
+}
+
+.user-slug {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    background-color: #3c8430;
+    color: #FFF;
+    border-radius: 10px;
+}

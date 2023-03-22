@@ -8,38 +8,89 @@ const socketIO = require('socket.io')(http, {
         origin: '*'
     }
 });
+const uuid4 = require("uuid4");
 
 app.use(cors())
-let users = []
+let users = {}
 
 socketIO.on('connection', (socket) => {
+
     console.log(`⚡: ${socket.id} user just connected!`)  
-    socket.on("message", data => {
-      socketIO.emit("messageResponse", data)
-    })
 
-    socket.on("typing", data => (
-      socket.broadcast.emit("typingResponse", data)
-    ))
-
-    socket.on("newUser", data => {
-      users.push(data)
-      socketIO.emit("newUserResponse", users)
-    })
- 
     socket.on('disconnect', () => {
       console.log('🔥: A user disconnected');
-      users = users.filter(user => user.socketID !== socket.id)
-      socketIO.emit("newUserResponse", users)
-      socket.disconnect()
+      let roomId;
+      for (const [key, value] of Object.entries(users)) {
+        if (value.includes(socket.username)) {
+          roomId = key;
+          break;
+        }
+      }
+
+      if (roomId) {
+        users[roomId] = users[roomId].filter(name => name !== socket.username);
+
+        socket.to(roomId).emit("newUserResponse", users[roomId]);
+      }
     });
+
+    socket.on('leaveChat', (message) => {
+
+    });
+
+    socket.on('message', data => {
+      console.log(data);
+      socketIO.to(data.id).emit('messageResponse', data);
+    })
+
+    socket.on('typing', data => {
+      socketIO.to(data.id).emit('typingResponse', {
+        message: data.message
+      });
+    })
+
+    socket.on('roomEntered', data => {
+      socketIO.to(data.id).emit('roomEntered', {
+        users: users[data.id]
+      })
+    })
+
+    socket.on('createRoom', (message) => {
+      const roomCode = message.roomId;
+      socket.join(roomCode);
+      socket.emit('roomCreated', {
+        id: roomCode,
+        owner: message.name
+      })
+      console.log('Room ' + roomCode + ' created by ' + message.name)
+    });
+
+    socket.on('joinRoom', (message) => {
+      const room = socketIO.sockets.adapter.rooms.get(message.id);
+
+      console.log(message);
+
+      if (room && room.size < 10) {
+        socket.join(message.id);
+        socket.username = message.name;
+
+        if (!users[message.id]) {
+          users[message.id] = [message.name];
+        } else {
+          users[message.id].push(message.name);
+        }
+
+        socket.emit('roomJoined', {
+          id: message.id,
+          users: users[message.id]
+        })
+      } else {
+        console.log('Something happened.')
+      }
+    })
+
 });
 
-app.get("/api", (req, res) => {
-  res.json({message: "Hello"})
-});
-
-   
 http.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
