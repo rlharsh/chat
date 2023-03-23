@@ -12,6 +12,8 @@ const ChatFooter = (props) => {
     
 
     const sendMessage = () => {
+        if (message === '') return;
+        
         const now = new Date();
         const timestamp = now.getTime();
 
