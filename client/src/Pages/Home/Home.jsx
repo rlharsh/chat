@@ -40,7 +40,6 @@ const Home = ({socket}) => {
 
   useEffect(() => {
     socket.on('roomJoined', (data) => {
-      socket.username = userName;
       navigate(`/chat/${data.id}`)
     });
   }, [socket]);
@@ -67,7 +66,10 @@ const Home = ({socket}) => {
             therein will be lost.
           </p>
           <label htmlFor="user">Username:</label>
-          <input type="text" name='user' id='user' onChange={(e) => setUserName(e.target.value)} />
+          <input type="text" name='user' id='user' onChange={(e) => {
+              setUserName(e.target.value);
+              socket.username = e.target.value;
+            }} />
           <label htmlFor="code">Room Code:</label>
           <input type="text" name='code' id='code' onChange={(e) => setRoomCode(e.target.value)} />
           <button className='button' type='button' onClick={ createOrJoin }>Start Chatting Now</button>
