@@ -44,11 +44,6 @@ const Home = ({socket}) => {
     navigate(`/chat/${data.id}`)
   });
 
-  socket.on('roomCreated', (data) => {
-    //socket.username = userName;
-    //navigate(`/chat/${data.id}`)
-  });
-
   return (
     <div id='home' className='home-wrapper'>
       <Modal
