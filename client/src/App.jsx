@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import socketIO from 'socket.io-client';
 
-const socket = socketIO.connect('http://97.87.8.198:4000');
+const socket = socketIO.connect('http://192.168.1.26:4000');
 
 /* Import the primary Stylesheet */
 import './assets/css/app.css';

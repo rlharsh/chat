@@ -8,7 +8,6 @@ const socketIO = require('socket.io')(http, {
         origin: '*'
     }
 });
-const uuid4 = require("uuid4");
 
 app.use(cors())
 let users = {}
