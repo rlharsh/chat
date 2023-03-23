@@ -19,7 +19,7 @@
   width: 100%;
   padding: 1rem;
   border-radius: 0px 10px 10px 10px;
-  background-color: #d8d8d8;
+  background-color: #131825;
   color: #000;
   font-size: 1rem;
   line-height: 1.4rem;
@@ -38,6 +38,8 @@
   position: absolute;
   bottom: -1.8rem;
   right: 0;
+  color: #707070;
+  font-size: 1rem;
 }
 
 .outgoing-message {
@@ -55,7 +57,7 @@
   width: 100%;
   padding: 1rem;
   border-radius: 10px 0 10px 10px;
-  background-color: #009cf6;
+  background-color: #131825;
   color: #FFF;
   font-size: 1rem;
   line-height: 1.4rem;
@@ -73,6 +75,8 @@
   width: 100%;
   position: absolute;
   bottom: -1.8rem;
+  color: #707070;
+  font-size: 1rem;
 }
 
 .chat-messages {

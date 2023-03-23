@@ -63,7 +63,7 @@
 .home-wrapper__banner {
   display: flex;
   padding: 8rem 0;
-  background-color: #f8f8f8;
+  background-color: #121825;
   width: 100%;
 }
 .home-wrapper__banner__internal {
@@ -84,6 +84,7 @@
 .home-wrapper__banner__internal p {
   font-size: 1.25rem;
   font-weight: 300;
+  color: #fff;
 }
 .home-wrapper__banner__internal__button-wrapper {
   display: flex;

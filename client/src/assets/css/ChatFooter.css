@@ -12,21 +12,33 @@
   align-items: center;
   width: 100%;
 }
+.chat-footer p {
+  color: #707070;
+}
 .chat-footer input[type=text] {
   position: relative;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 1rem 4rem 1rem 1rem;
-  border: 1px solid #009cf6;
+  background-color: #131825;
+  border: none;
+  outline: none;
   margin-top: 1rem;
   width: 100%;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+.chat-footer input[type=text]:focus {
+  outline: 1px solid #5181FF;
 }
 .chat-footer .button-send {
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
   font-weight: 200;
   border-radius: 5px;
-  background-color: #009cf6;
-  color: #FFF;
+  background-color: transparent;
+  color: #5181FF;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -37,11 +49,6 @@
   height: 2.5rem;
   width: 3.5rem;
   display: flex;
-  padding: 1rem 4rem;
   align-items: center;
   justify-content: center;
-}
-.chat-footer .button-send:hover {
-  background-color: #bde7ff;
-  color: #000;
 }/*# sourceMappingURL=ChatFooter.css.map */

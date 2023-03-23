@@ -31,7 +31,8 @@ const ChatHeader = (props) => {
             </div>
         </div>
         <div className='chat-header__right'>
-            <button type='button' onClick={ leaveChat }>Leave Chat</button>
+        <button type='button' onClick={ leaveChat }><i className="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button type='button' onClick={ leaveChat }><i className="fa-regular fa-copy"></i></button>
         </div>
         
     </div>

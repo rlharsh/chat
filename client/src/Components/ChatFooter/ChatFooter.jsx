@@ -37,7 +37,12 @@ const ChatFooter = (props) => {
 
     let timeoutId;
 
-    const handleTyping = () => {
+    const handleTyping = (e) => {
+        if (e.key === "Enter") {
+            sendMessage();
+            setMessage("");
+        }
+
         props.socket.emit('typing', {
           id: props.id,
           message: `${props.socket.username} is typing...`
@@ -58,10 +63,10 @@ const ChatFooter = (props) => {
                 { renderTypingStatus() }
             </div>
             <div className='inputs'>
-                <input type="text" onChange={(e) => {
+                <input value={message} type="text" onChange={(e) => {
                     setMessage(e.target.value);
                 }} onKeyDown={handleTyping} />
-                <button className='button-send' type='button' onClick={ sendMessage }>Send</button>
+                <button className='button-send' type='button' onClick={ sendMessage }><i className="fa-regular fa-paper-plane"></i></button>
             </div>
         </div>
     )
