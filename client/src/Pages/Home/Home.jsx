@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
@@ -32,17 +32,18 @@ const Home = ({socket}) => {
       const roomID = uuid4();
       socket.emit('createRoom', { name: userName, roomId: roomID });
       socket.emit('joinRoom', { name: userName, id: roomID });
-      console.log('Room Created');
     }
     if (roomCode !== '' && userName != '') {
       socket.emit('joinRoom', { name: userName, id: roomCode });
     }
   }
 
-  socket.on('roomJoined', (data) => {
-    socket.username = userName;
-    navigate(`/chat/${data.id}`)
-  });
+  useEffect(() => {
+    socket.on('roomJoined', (data) => {
+      socket.username = userName;
+      navigate(`/chat/${data.id}`)
+    });
+  }, [socket]);
 
   return (
     <div id='home' className='home-wrapper'>
