@@ -10,10 +10,9 @@ const ChatFooter = (props) => {
 
     const [message, setMessage] = useState('');
     
-
     const sendMessage = () => {
         if (message === '') return;
-        
+
         const now = new Date();
         const timestamp = now.getTime();
 
