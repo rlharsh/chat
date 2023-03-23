@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import doorbell from "./doorbell.mp3";
+import notification from "./notification.mp3";
 
 /* Import the primary Stylesheet */
 import '../../assets/css/Chat.css';
@@ -14,65 +16,91 @@ const Chat = ({socket}) => {
     const [messages, setMessages] = useState([]);
     const [typingStatus, setTypingStatus] = useState("");
 
-    
-        socket.on('messageResponse', data => {
-            console.log(data);
-            setMessages([...messages, data])
-        }) 
+    const newuser = new Audio(notification);
+    const notify = new Audio(doorbell);
 
-    useEffect(()=> {
-        socket.on("typingResponse", data => setTypingStatus(data.message))
-        }, [socket]);
-        
     useEffect(() => {
+        const handleNewMessage = (data) => {
+            newuser.loop = false;
+            newuser.play();
+            setMessages(prevMessages => [...prevMessages, data]);
+        };
+        socket.on('messageResponse', handleNewMessage);
+        return () => {
+            socket.off('messageResponse', handleNewMessage);
+        };
+    }, [socket, newuser]);
+
+    useEffect(() => {
+        const handleTypingStatus = (data) => {
+            setTypingStatus(data.message);
+        };
+        socket.on("typingResponse", handleTypingStatus);
+        return () => {
+            socket.off("typingResponse", handleTypingStatus);
+        };
+    }, [socket]);
+
+    const handleRoomEntered = useCallback(() => {
         socket.emit('roomEntered', {
             name: socket.username,
             id: id
         })
+    }, [socket, id]);
+
+    useEffect(() => {
+        handleRoomEntered();
+    }, [handleRoomEntered]);
+
+    useEffect(() => {
+        const handleRoomEnteredResponse = (data) => {
+            setUsers(data.users);
+            notify.loop = false;
+            notify.play();
+        };
+        socket.on('roomEntered', handleRoomEnteredResponse);
+        return () => {
+            socket.off('roomEntered', handleRoomEnteredResponse);
+        };
     }, [socket]);
 
     useEffect(() => {
-        socket.on('roomEntered', data => {
-            setUsers(data.users);
-            console.log(data);
-        })
-    })
+        const handleRoomJoined = (message) => {
+            setUsers(message.users);
+        };
+        socket.on('roomJoined', handleRoomJoined);
+        return () => {
+            socket.off('roomJoined', handleRoomJoined);
+        };
+    }, [socket]);
 
     useEffect(() => {
-        const joinRoom = () => {
-            //socket.emit('joinRoom', { name: socket.username, id: id })
-        }
+        const handleUserLeft = (message) => {
+            // Handle user left event
+        };
+        socket.on('userLeft', handleUserLeft);
+        return () => {
+            socket.off('userLeft', handleUserLeft);
+        };
+    }, [socket]);
 
-        joinRoom();
-        
-    }, [id, socket]);
-
-    socket.on('roomJoined', (message) => {
-        setUsers(message.users);
-        console.log(message);
-    });
-
-    socket.on('userLeft', (message) => {
-
-    });
-
-    const renderHeader = () => {
+    const renderHeader = useCallback(() => {
         return(
             <ChatHeader socket={socket} users={users} id={id}/>
         )
-    };
+    }, [socket, users, id]);
 
-    const renderBody = () => {
+    const renderBody = useCallback(() => {
         return(
             <ChatBody socket={socket} users={users} id={id} messages={messages} />
         )
-    };
+    }, [socket, users, id, messages]);
 
-    const renderFooter = () => {
+    const renderFooter = useCallback(() => {
         return(
             <ChatFooter socket={socket} users={users} id={id} typingStatus={typingStatus} />
         )
-    }
+    }, [socket, users, id, typingStatus]);
 
     return (
         <div className='chat'>
@@ -87,4 +115,4 @@ const Chat = ({socket}) => {
     )
 }
 
-export default Chat
+export default Chat;
