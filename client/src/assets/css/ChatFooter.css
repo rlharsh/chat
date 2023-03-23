@@ -30,7 +30,7 @@
   font-weight: 200;
 }
 .chat-footer input[type=text]:focus {
-  outline: 1px solid #5181FF;
+  outline: 1px solid #3C4B78;
 }
 .chat-footer .button-send {
   font-family: "Poppins", sans-serif;
@@ -38,7 +38,7 @@
   font-weight: 200;
   border-radius: 5px;
   background-color: transparent;
-  color: #5181FF;
+  color: #3C4B78;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import uuid4 from 'uuid4';
 
+import CryptoJS from 'crypto-js';
+
 /* Import the primary Stylesheet */
 import '../../assets/css/ChatFooter.css';
 
@@ -13,9 +15,11 @@ const ChatFooter = (props) => {
         const now = new Date();
         const timestamp = now.getTime();
 
+        const cipherText = CryptoJS.AES.encrypt(message, props.id).toString();
+
         props.socket.emit('message',
             {
-                text: message,
+                text: cipherText,
                 name: props.socket.username,
                 id: props.id,
                 socketID: props.socket.id,

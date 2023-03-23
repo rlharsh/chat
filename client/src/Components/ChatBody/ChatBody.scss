@@ -15,7 +15,27 @@
     align-items: center;
     gap: 1rem;
 
+    a {
+        color: #fff;
+        text-decoration: none;
+        transition: .2s all ease-in-out;
+
+        &:visited, &:active {
+            color: #fff;
+        }
+
+        &:hover {
+            color: #707070;
+        }
+    }
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
     &__message-text {
+        position: relative;
         width: 100%;
         padding: 1rem;
         border-radius: 0px 10px 10px 10px;
@@ -37,12 +57,13 @@
     }
 
     &__timestamp {
+        text-align: left;
+        width: 100%;
         position: absolute;
-        bottom: -1.8rem;
-        right: 0;
+        bottom: -2rem;
+        left: 0;
         color: #707070;
         font-size: 1rem;
-        
     }
 }
 
@@ -57,7 +78,27 @@
     align-items: center;
     gap: 1rem;
 
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        transition: .2s all ease-in-out;
+
+        &:visited, &:active {
+            color: #fff;
+        }
+
+        &:hover {
+            color: #707070;
+        }
+    }
+
     &__message-text {
+        position: relative;
         width: 100%;
         padding: 1rem;
         border-radius: 10px 0 10px 10px;
@@ -79,9 +120,11 @@
     }
 
     &__timestamp {
-        width: 100%;;
+        text-align: right;
+        width: 100%;
         position: absolute;
-        bottom: -1.8rem;
+        bottom: -2rem;
+        left: 0;
         color: #707070;
         font-size: 1rem;
     }
@@ -91,4 +134,5 @@
     padding: 2rem;
     width: 100%;
     max-width: 1440px;
+    overflow-x: hidden;
 }

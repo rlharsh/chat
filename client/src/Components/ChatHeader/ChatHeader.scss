@@ -18,20 +18,22 @@
         padding-right: 1rem;
         padding-left: 1rem;
         border-radius:      5px;
-        color:              #5181FF;
-        border:             1px solid #5181FF;
+        color:              #3C4B78;
+        border:             1px solid #3C4B78;
         background-color:   transparent;
         cursor:             pointer;
+        transition:         all .2s ease-in-out;
 
         &:hover {
             color:      #FFF;
-            background-color: #009cf6;
+            background-color: #3C4B78;
         }
     }
 
     h1 {
         font-size:      2.5rem;
         font-weight:    200;
+        color: #3C4B78;
     }
 
     &__left {

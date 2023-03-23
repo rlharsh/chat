@@ -15,7 +15,23 @@
   align-items: center;
   gap: 1rem;
 }
+.incoming-message a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s all ease-in-out;
+}
+.incoming-message a:visited, .incoming-message a:active {
+  color: #fff;
+}
+.incoming-message a:hover {
+  color: #707070;
+}
+.incoming-message img {
+  width: 100%;
+  border-radius: 10px;
+}
 .incoming-message__message-text {
+  position: relative;
   width: 100%;
   padding: 1rem;
   border-radius: 0px 10px 10px 10px;
@@ -35,9 +51,11 @@
   color: #FFF;
 }
 .incoming-message__timestamp {
+  text-align: left;
+  width: 100%;
   position: absolute;
-  bottom: -1.8rem;
-  right: 0;
+  bottom: -2rem;
+  left: 0;
   color: #707070;
   font-size: 1rem;
 }
@@ -53,7 +71,23 @@
   align-items: center;
   gap: 1rem;
 }
+.outgoing-message img {
+  width: 100%;
+  border-radius: 10px;
+}
+.outgoing-message a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s all ease-in-out;
+}
+.outgoing-message a:visited, .outgoing-message a:active {
+  color: #fff;
+}
+.outgoing-message a:hover {
+  color: #707070;
+}
 .outgoing-message__message-text {
+  position: relative;
   width: 100%;
   padding: 1rem;
   border-radius: 10px 0 10px 10px;
@@ -73,9 +107,11 @@
   color: #FFF;
 }
 .outgoing-message__timestamp {
+  text-align: right;
   width: 100%;
   position: absolute;
-  bottom: -1.8rem;
+  bottom: -2rem;
+  left: 0;
   color: #707070;
   font-size: 1rem;
 }
@@ -84,4 +120,5 @@
   padding: 2rem;
   width: 100%;
   max-width: 1440px;
+  overflow-x: hidden;
 }/*# sourceMappingURL=ChatBody.css.map */
