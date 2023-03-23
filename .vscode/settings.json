@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/9bae9613-355d-4990-a37e-a144db0a206d/resourceGroups/DefaultResourceGroup-CUS/providers/Microsoft.Web/sites/chatnonymous",
+    "appService.deploySubpath": "server"
+}
